@@ -1,9 +1,9 @@
 function getComputerChoice(){
     let chance = Math.random();
     let choice;
-    if (chance < 0.3333333333){
+    if (chance < 1/3){
         choice = "rock";
-    } else if ( chance > 0.3333333333 && chance < 0.6666666666){
+    } else if ( chance > 1/3 && chance < 2/3){
         choice = "paper";
     } else {
         choice = "scissors";
@@ -90,7 +90,7 @@ function playGame(){
     } else if (playerScore === computerScore){
         console.log("DRAW! PLAY AGAIN.")
     } else {
-        console.log("YOU lOSE!")
+        console.log("YOU LOSE!")
     }
 }
 
