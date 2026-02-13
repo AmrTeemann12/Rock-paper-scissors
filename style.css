@@ -1,0 +1,48 @@
+#container{
+    border: solid 10px #424242;
+    margin: 10px auto;
+    display: flex;
+    justify-content: center;
+    padding: 8px
+}
+
+.play-button{
+    background: #e3e3e3;
+    border: none;
+    margin: 8px;
+    width: 150px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#paper{
+    background-image: url(images/paper.png);
+}
+
+#rock{
+    background-image: url(images/rock.png);
+}
+
+#scissors{
+    background-image: url(images/scissors.png);
+}
+
+.play-button:hover{
+    scale: 1.1;
+    cursor: pointer;
+    border: solid 1px #12B712;
+}
+
+#show-box{
+    display: flex;
+}
+
+.show-box{
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
