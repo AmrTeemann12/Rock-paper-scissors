@@ -11,17 +11,8 @@ function getComputerChoice(){
     return choice;
 }
 
-function getHumanChoice(){
-    let choice = prompt("Rock, paper, or scissors?")
-    return choice.toLowerCase();
-}
-
-let playerScore = 0;
-let computerScore = 0;
-let result;
-
 function playRound(human, computer){
-   
+    let result;
     switch(human){
         case "rock":
             switch(computer){
@@ -77,14 +68,45 @@ function playRound(human, computer){
     resultBox.appendChild(statement)
 }
 
+let playerScore = 0;
+let computerScore = 0;
 const resultBox = document.querySelector("#result-box")
 const showComputerChoice = document.querySelector("#computer-choice")
 const showPlayerChoice = document.querySelector("#player-choice")
 const buttons = document.querySelectorAll(".play-button");
 
+
 buttons.forEach((button) => button.addEventListener("click", (e) => {
+    let view = resultBox.textContent;
+    if (view.includes("YOU WIN!")||
+        view.includes("YOU LOSE!")||
+        view.includes("DRAW! Play again.")){
+            resultBox.textContent = "";
+        }
     const computerSelection = getComputerChoice();
+
     playRound(e.target.id, computerSelection)
+
     showPlayerChoice.style.backgroundImage = `url(images/${e.target.id}.png)`;
-    showComputerChoice.style.backgroundImage = `url(images/${computerSelection}.png)`
+    showComputerChoice.style.backgroundImage = `url(images/${computerSelection}.png)`;
+
+    const paras = resultBox.querySelectorAll("p");
+    if (paras.length === 5){
+        const final = document.createElement("p");
+        final.style.cssText = "background: yellow; text-align: center;";
+
+        if (playerScore === computerScore){
+            final.textContent= "DRAW! Play again.";
+            final.style.color = "#424242";
+        } else if(playerScore > computerScore){
+            final.textContent = "YOU WIN!";
+            final.style.color = "green";
+        } else {
+            final.textContent = "YOU LOSE!";
+            final.style.color = "red";
+        }
+        resultBox.appendChild(final)
+        computerScore = 0;
+        playerScore = 0;
+    }
 }));

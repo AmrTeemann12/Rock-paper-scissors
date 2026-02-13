@@ -1,17 +1,35 @@
+body{
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #151515;
+    color: #12B712;
+    font-family: atari;
+    font-size: 16px;
+}
+
+h1{
+    text-align: center;
+}
+
 #container{
-    border: solid 10px #424242;
-    margin: 10px auto;
+    width: auto;
+    border: solid 5px #424242;
+    margin: 8px auto;
     display: flex;
     justify-content: center;
-    padding: 8px
+    padding: 8px;
+    flex-wrap: wrap;
 }
 
 .play-button{
-    background: #e3e3e3;
+    background: #252525;
     border: none;
     margin: 8px;
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -35,13 +53,18 @@
     border: solid 1px #12B712;
 }
 
-#show-box{
+#show-div{
+    margin: 8px;
     display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .show-box{
     width: 100px;
     height: 100px;
+    background-color: #424242;
+    border-radius: 8px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
