@@ -3,7 +3,7 @@ function getComputerChoice(){
     let choice;
     if (chance < 1/3){
         choice = "rock";
-    } else if ( chance > 1/3 && chance < 2/3){
+    } else if (chance < 2/3){
         choice = "paper";
     } else {
         choice = "scissors";
@@ -63,11 +63,13 @@ function playRound(human, computer){
         default:
             result = "invalid choice"
     }
-    statement = document.createElement("p");
+    roundCount++
+    let statement = document.createElement("p");
     statement.textContent = result;
     resultBox.appendChild(statement)
 }
-
+let roundCount = 0;
+let gameOver = false;
 let playerScore = 0;
 let computerScore = 0;
 const resultBox = document.querySelector("#result-box")
@@ -77,11 +79,10 @@ const buttons = document.querySelectorAll(".play-button");
 
 
 buttons.forEach((button) => button.addEventListener("click", (e) => {
-    let view = resultBox.textContent;
-    if (view.includes("YOU WIN!")||
-        view.includes("YOU LOSE!")||
-        view.includes("DRAW! Play again.")){
+    
+    if (gameOver){
             resultBox.textContent = "";
+            gameOver = false;
         }
     const computerSelection = getComputerChoice();
 
@@ -90,8 +91,7 @@ buttons.forEach((button) => button.addEventListener("click", (e) => {
     showPlayerChoice.style.backgroundImage = `url(images/${e.target.id}.png)`;
     showComputerChoice.style.backgroundImage = `url(images/${computerSelection}.png)`;
 
-    const paras = resultBox.querySelectorAll("p");
-    if (paras.length === 5){
+    if (roundCount === 5){
         const final = document.createElement("p");
         final.style.cssText = "background: yellow; text-align: center;";
 
@@ -108,5 +108,7 @@ buttons.forEach((button) => button.addEventListener("click", (e) => {
         resultBox.appendChild(final)
         computerScore = 0;
         playerScore = 0;
+        roundCount = 0;
+        gameOver = true;
     }
 }));
